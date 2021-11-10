@@ -16,7 +16,7 @@ const SecondaryNavBar = () => {
   }
 
   return (
-    <Segment inverted>
+    <Segment inverted style={{ paddingTop: "5px" }}>
       <Menu inverted pointing secondary>
         <Menu.Item
           name="orders"
