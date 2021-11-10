@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import Router from "./router"
+import Router from "./Router"
 import { ToastContainer } from "react-toastify"
 import { useDispatch } from "react-redux"
 import { logIn } from "./store/actions/auth-action"
