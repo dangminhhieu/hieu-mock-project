@@ -1,14 +1,14 @@
 import { List } from "semantic-ui-react"
 import MenuItem from "./MenuItem"
 
-const MenuItemList = ({ items, viewOrder, addToCart }) => {
+const MenuItemList = ({ items, editItem, addToCart }) => {
   return (
-    <List className="menu-item-list" size={"large"}>
+    <List className="menu-item-list">
       {items.map(item => (
         <MenuItem
           key={item.itemId}
           item={item}
-          viewOrder={viewOrder}
+          editItem={editItem}
           addToCart={addToCart}
         ></MenuItem>
       ))}

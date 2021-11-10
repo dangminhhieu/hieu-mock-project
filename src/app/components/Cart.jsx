@@ -1,4 +1,4 @@
-import { Button, Divider, Header, Label, List } from "semantic-ui-react"
+import { Button, Header, Label, Segment } from "semantic-ui-react"
 import CartItemGroup from "./CartItemGroup"
 import { formatCurrency } from "../helpers/number.helper"
 
@@ -11,38 +11,30 @@ const Cart = ({
   deliveryInfo,
   handleChangeDelivery,
 }) => {
-  const { groups, subtotal, total } = cart
+  const { groups, total } = cart
 
   return (
     <>
-      <Header>Cart</Header>
-
-      <List divided selection>
-        <List.Item>
-          Sub-total
-          <Label horizontal style={{ float: "right" }}>
-            {formatCurrency(subtotal || 0)}
-          </Label>
-        </List.Item>
-        <List.Item className="total">
+      <Segment>
+        <Header>
           Total
           <Label horizontal style={{ float: "right" }}>
             {formatCurrency(total || 0)}
           </Label>
-        </List.Item>
-      </List>
-      <Button
-        basic
-        content="Place an Order"
-        labelPosition="left"
-        icon="thumbs up outline"
-        color="green"
-        style={{ marginTop: 15, width: "100%" }}
-        onClick={submitCart}
-        loading={loading}
-        disabled={loading}
-      />
-      <Divider></Divider>
+        </Header>
+
+        <Button
+          content="Submit"
+          labelPosition="left"
+          icon="send"
+          color="grey"
+          style={{ marginTop: 15, width: "100%" }}
+          onClick={submitCart}
+          loading={loading}
+          disabled={loading}
+        />
+      </Segment>
+
       {groups &&
         Object.keys(groups).map(k => (
           <CartItemGroup

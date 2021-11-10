@@ -5,9 +5,9 @@ const NavBar = () => {
   const history = useHistory()
 
   return (
-    <Menu pointing secondary size={"small"} widths={9}>
+    <Menu inverted text size={"small"} widths={9}>
       <Menu.Item onClick={() => history.push("/shop")}>
-        <Image src="/logo/logo32.png" />
+        <Image src="/logo32.png" />
       </Menu.Item>
     </Menu>
   )

@@ -7,7 +7,7 @@ import { addShopItem, getShopsDetail, updateShopItem } from "../../api/shop.api"
 import useToast from "../hooks/useToast"
 import { useHistory } from "react-router"
 import SecondaryNavBar from "../components/SecondaryNavBar"
-import MenuDetailModal from "../components/MenuDetailModal"
+import MenuItemModal from "../components/MenuItemModal"
 import { Grid } from "semantic-ui-react"
 import ShopSideBar from "./../components/ShopSideBar"
 
@@ -34,7 +34,7 @@ const AdminMenu = () => {
     }
   }, [status, data])
 
-  const viewOrder = id => {
+  const editItem = id => {
     const item = menuItems.find(i => i.itemId === id)
 
     modalRef.current.open(item)
@@ -74,10 +74,7 @@ const AdminMenu = () => {
             addItem={() => addItem()}
           ></SectionHeader>
           {menuItems && (
-            <MenuItemList
-              items={menuItems}
-              viewOrder={viewOrder}
-            ></MenuItemList>
+            <MenuItemList items={menuItems} editItem={editItem}></MenuItemList>
           )}
         </Grid.Column>
         <Grid.Column width={4}>
@@ -85,7 +82,7 @@ const AdminMenu = () => {
         </Grid.Column>
       </Grid>
 
-      <MenuDetailModal ref={modalRef} onSaveItem={saveItem}></MenuDetailModal>
+      <MenuItemModal ref={modalRef} onSaveItem={saveItem}></MenuItemModal>
     </>
   )
 }

@@ -95,16 +95,11 @@ const SignUp = () => {
 
   return (
     <Container style={{ marginTop: "5%" }}>
-      <Image src="/logo/logo64.png" centered style={{ marginBottom: "10px" }} />
+      <Image src="/logo64.png" centered style={{ marginBottom: "10px" }} />
       <Grid columns="equal">
         <Grid.Column></Grid.Column>
         <Grid.Column width={6}>
-          <Segment raised>
-            <Label as="a" style={{ width: "100%" }} onClick={toggleView}>
-              <Icon name="question circle" /> {label}
-            </Label>
-            <Divider />
-
+          <Segment>
             <Form id="register_form" loading={isLoading}>
               <Form.Field>
                 <Form.Input
@@ -128,12 +123,20 @@ const SignUp = () => {
                 <label>Logo</label>
                 <input type="file" name={fieldName} />
               </Form.Field>
-              <Button type="submit" color="green" fluid onClick={submit}>
+              <Button type="submit" color="grey" fluid onClick={submit}>
                 Register
               </Button>
             </Form>
 
             <Divider />
+            <Label
+              as="a"
+              style={{ width: "100%", marginBottom: "10px" }}
+              onClick={toggleView}
+            >
+              <Icon name="question circle" /> {label}
+            </Label>
+
             <Label
               as="a"
               basic

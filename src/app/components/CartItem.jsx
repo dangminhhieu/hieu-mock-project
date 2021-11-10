@@ -1,31 +1,43 @@
-import { Grid, Header, Icon } from "semantic-ui-react"
+import { Grid, Header, Icon, Label } from "semantic-ui-react"
 import { formatCurrency } from "../helpers/number.helper"
 
 const CartItem = ({ item, addToCart, removeFromCart }) => {
-  const { itemName, price, amount, note, itemId } = item
+  const { itemName, price, amount, itemId } = item
   return (
-    <Grid.Row columns={4}>
-      <Grid.Column width={6}>
-        <Header size="tiny" className="cart-item-name">
+    <Grid.Row>
+      <Grid.Column width={8}>
+        <Header size="tiny" className="cart-item-name" color="grey">
           {itemName}
         </Header>
-        <span className="cart-item-note">{note}</span>
       </Grid.Column>
       <Grid.Column width={1}>
-        <span className="cart-minus" onClick={() => removeFromCart(itemId)}>
-          <Icon name="minus" color="red" />
-        </span>
+        <Icon
+          className="cart-minus"
+          as="i"
+          name="minus"
+          color="grey"
+          onClick={() => removeFromCart(itemId)}
+        />
       </Grid.Column>
       <Grid.Column width={2}>
-        <span className="cart-quantity">x{amount}</span>
+        <Label
+          className="cart-quantity"
+          style={{ width: "100%", padding: "0px 10px" }}
+        >
+          x{amount}
+        </Label>
       </Grid.Column>
       <Grid.Column width={1}>
-        <span className="cart-plus" onClick={() => addToCart(itemId)}>
-          <Icon name="plus" color="green" />
-        </span>
+        <Icon
+          className="cart-plus"
+          as="i"
+          name="plus"
+          color="grey"
+          onClick={() => addToCart(itemId)}
+        />
       </Grid.Column>
       <Grid.Column width={4}>
-        <Header size="tiny" className="cart-subtotal">
+        <Header size="tiny" className="cart-subtotal" color="grey">
           {formatCurrency(price * amount)}
         </Header>
       </Grid.Column>

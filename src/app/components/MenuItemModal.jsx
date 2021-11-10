@@ -2,7 +2,7 @@ import { Modal, Button, Image, Form, Icon, Label } from "semantic-ui-react"
 import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { dataURIToBlob } from "../helpers/common.helper"
 
-const MenuDetailModal = forwardRef((props, ref) => {
+const MenuItemModal = forwardRef((props, ref) => {
   const [isOpen, setIsOpen] = useState(false)
   const [menu, setItem] = useState({})
   const inputFileRef = useRef(null)
@@ -53,7 +53,7 @@ const MenuDetailModal = forwardRef((props, ref) => {
     setImg(null)
   }
 
-  const { image, name, price, description, itemId } = menu
+  const { image, name, price, itemId } = menu
   const imgSrc = image ? `data:image/png;base64, ${image}` : null
 
   return (
@@ -62,6 +62,7 @@ const MenuDetailModal = forwardRef((props, ref) => {
       onOpen={() => setIsOpen(true)}
       open={isOpen}
       className="menu-modify-modal"
+      size="small"
     >
       <Modal.Header>Shop Item</Modal.Header>
       <Modal.Content image>
@@ -99,7 +100,7 @@ const MenuDetailModal = forwardRef((props, ref) => {
                     labelPosition="right"
                     onClick={requestChooseFile}
                   >
-                    <Button>
+                    <Button color="grey">
                       <Icon name="upload" />
                       Upload File
                     </Button>
@@ -122,7 +123,7 @@ const MenuDetailModal = forwardRef((props, ref) => {
         )}
       </Modal.Content>
       <Modal.Actions>
-        <Button color="black" onClick={() => setIsOpen(false)}>
+        <Button color="grey" onClick={() => setIsOpen(false)}>
           Close
         </Button>
         <Button
@@ -130,11 +131,11 @@ const MenuDetailModal = forwardRef((props, ref) => {
           labelPosition="right"
           icon="checkmark"
           onClick={() => saveItem()}
-          positive
+          color="grey"
         />
       </Modal.Actions>
     </Modal>
   )
 })
 
-export default MenuDetailModal
+export default MenuItemModal

@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useState } from "react"
 import { useParams } from "react-router"
 import { Header } from "semantic-ui-react"
 import { getOrder } from "../../api/order.api"
@@ -13,7 +12,9 @@ const Tracking = () => {
   console.log(order)
   return (
     <>
-      <Header size="medium">Order Status Tracking (realtime) </Header>
+      <Header size="medium" color="grey">
+        Order Status Tracking (realtime){" "}
+      </Header>
     </>
   )
 }

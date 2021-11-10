@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
-import { Button, Image } from "semantic-ui-react"
-import ModifyShopModal from "./ModifyShopModal"
+import { Button, Image, Segment } from "semantic-ui-react"
+import ShopProfileModal from "./ShopProfileModal"
 import { useDispatch, useSelector } from "react-redux"
 import { getShopsDetail, updateShopInfo } from "../../api/shop.api"
 import useToast from "../hooks/useToast"
@@ -48,7 +48,7 @@ const ShopSideBar = () => {
   }
 
   return (
-    <>
+    <Segment>
       <ShopMeta icon="home" title="Name" label={name}></ShopMeta>
       <ShopMeta
         icon="phone"
@@ -69,7 +69,7 @@ const ShopSideBar = () => {
         labelPosition="left"
         icon="share alternate"
         onClick={share}
-        color="green"
+        color="grey"
         style={{ marginTop: "10px", width: "100%" }}
       />
 
@@ -79,7 +79,7 @@ const ShopSideBar = () => {
         labelPosition="left"
         icon="linkify"
         onClick={copy}
-        color="brown"
+        color="grey"
         style={{ marginTop: "10px", width: "100%" }}
       />
 
@@ -89,7 +89,7 @@ const ShopSideBar = () => {
         labelPosition="left"
         icon="briefcase"
         onClick={viewShopProfile}
-        color="blue"
+        color="grey"
         style={{ marginTop: "10px", width: "100%" }}
       />
 
@@ -99,16 +99,16 @@ const ShopSideBar = () => {
         labelPosition="left"
         icon="sign-out"
         onClick={() => dispatch(logOut())}
-        color="blue"
+        color="grey"
         style={{ marginTop: "10px", width: "100%" }}
       />
 
-      <ModifyShopModal
+      <ShopProfileModal
         updateProfile={updateProfile}
         shopData={shopData}
         ref={modalRef}
-      ></ModifyShopModal>
-    </>
+      ></ShopProfileModal>
+    </Segment>
   )
 }
 

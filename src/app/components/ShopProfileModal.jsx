@@ -2,7 +2,7 @@ import { Modal, Button, Image, Form, Icon, Label } from "semantic-ui-react"
 import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { dataURIToBlob } from "../helpers/common.helper"
 
-const ModifyShopModal = forwardRef((props, ref) => {
+const ShopProfileModal = forwardRef((props, ref) => {
   const [isOpen, setIsOpen] = useState(false)
   const [img, setImg] = useState(null)
   const inputFileRef = useRef(null)
@@ -56,6 +56,7 @@ const ModifyShopModal = forwardRef((props, ref) => {
       onOpen={() => setIsOpen(true)}
       open={isOpen}
       className="shop-modify-modal"
+      size="small"
     >
       <Modal.Header>Shop Profile</Modal.Header>
       <Modal.Content image>
@@ -80,7 +81,7 @@ const ModifyShopModal = forwardRef((props, ref) => {
                 labelPosition="right"
                 onClick={requestChooseFile}
               >
-                <Button>
+                <Button color="grey">
                   <Icon name="upload" />
                   Upload File
                 </Button>
@@ -102,7 +103,7 @@ const ModifyShopModal = forwardRef((props, ref) => {
       </Modal.Content>
       <Modal.Actions>
         <Button
-          color="black"
+          color="grey"
           onClick={() => {
             setImg(null)
             setIsOpen(false)
@@ -115,11 +116,11 @@ const ModifyShopModal = forwardRef((props, ref) => {
           labelPosition="right"
           icon="checkmark"
           onClick={() => saveProfile()}
-          positive
+          color="grey"
         />
       </Modal.Actions>
     </Modal>
   )
 })
 
-export default ModifyShopModal
+export default ShopProfileModal

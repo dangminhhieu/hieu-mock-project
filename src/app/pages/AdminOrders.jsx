@@ -87,10 +87,10 @@ const AdminOrders = () => {
         <Grid.Column width={12}>
           <SecondaryNavBar />
           <SectionHeader title="View Orders"></SectionHeader>
-          <div className="ag-theme-material order-grid">
+          <div className="ag-theme-balham order-grid">
             <AgGridReact
               reactUi="true"
-              className="ag-theme-material"
+              className="ag-theme-balham"
               animateRows="true"
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}

@@ -6,11 +6,11 @@ import {
   Image,
   Form,
   Grid,
-  Segment,
   Container,
   Divider,
   Label,
   Icon,
+  Header,
 } from "semantic-ui-react"
 import { login } from "../../api/shop.api"
 import { useDispatch } from "react-redux"
@@ -66,45 +66,44 @@ const SignIn = () => {
     }
   }
 
-  const label = isShop ? "Sign in as customer?" : "Sign in as shop owner?"
+  const label = isShop ? "Are you customer?" : "Are you shop owner?"
 
   return (
     <Container style={{ marginTop: "5%" }}>
-      <Image src="/logo/logo64.png" centered style={{ marginBottom: "10px" }} />
+      <Image src="/logo64.png" centered style={{ marginBottom: "10px" }} />
       <Grid columns="equal">
         <Grid.Column></Grid.Column>
         <Grid.Column width={6}>
-          <Label as="a" style={{ width: "100%" }} onClick={toggleView}>
-            <Icon name="question circle" /> {label}
-          </Label>
-          <Divider />
-
-          <Segment raised>
+          <Container>
             <Form>
               <Form.Field>
-                <label>Phone Number</label>
+                <Header as="h6" color="grey">
+                  Phone Number
+                </Header>
                 <input
                   placeholder="Phone Number"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
                 />
               </Form.Field>
-              <Button type="submit" color="green" fluid onClick={submit}>
-                Submit
+              <Button type="submit" color="grey" fluid onClick={submit}>
+                Sign In
               </Button>
             </Form>
-
             <Divider />
+            <Label as="a" style={{ width: "100%" }} onClick={toggleView}>
+              <Icon name="question circle" /> {label}
+            </Label>
             <Label
               as="a"
               basic
               color="grey"
-              style={{ width: "100%" }}
+              style={{ width: "100%", marginTop: "10px" }}
               onClick={signUp}
             >
               <Icon name="user plus" /> Don't have account? Register now
             </Label>
-          </Segment>
+          </Container>
         </Grid.Column>
         <Grid.Column></Grid.Column>
       </Grid>

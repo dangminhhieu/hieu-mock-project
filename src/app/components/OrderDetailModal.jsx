@@ -6,10 +6,10 @@ import OrderInforField from "./OrderInforField"
 import { formatCurrency } from "../helpers/number.helper"
 
 const priceRender = params => {
-  return formatCurrency(params.value);
+  return formatCurrency(params.value)
 }
 
-const renderNextStatusButton = (status) => {
+const renderNextStatusButton = status => {
   let color = null
   let label = ""
 
@@ -45,7 +45,7 @@ const OrderDetailModal = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     open(orderData) {
-      setOrder(orderData);
+      setOrder(orderData)
       setIsOpen(true)
     },
   }))
@@ -55,7 +55,7 @@ const OrderDetailModal = forwardRef((props, ref) => {
       { field: "itemName", minWidth: 100, headerName: "Name" },
       { field: "price", cellRenderer: priceRender },
       { field: "amount", headerName: "Quantity" },
-      { field: "total" }
+      { field: "total" },
     ],
     []
   )
@@ -68,19 +68,29 @@ const OrderDetailModal = forwardRef((props, ref) => {
     []
   )
 
-  const { orderId, customerName, customerPhoneNumber, orderTime, itemsInCart, totalPrice, status, customerId, shopId } = order
-  const nextBtn = renderNextStatusButton(status);
+  const {
+    orderId,
+    customerName,
+    customerPhoneNumber,
+    orderTime,
+    itemsInCart,
+    totalPrice,
+    status,
+    customerId,
+    shopId,
+  } = order
+  const nextBtn = renderNextStatusButton(status)
 
   const changeOrderStatus = () => {
     const payload = {
       orderId,
       customerId,
       shopId,
-      orderStatus: nextBtn.label
-    };
+      orderStatus: nextBtn.label,
+    }
 
-    props.updateOrderStatus(payload);
-    setIsOpen(false);
+    props.updateOrderStatus(payload)
+    setIsOpen(false)
   }
 
   return (
@@ -127,12 +137,12 @@ const OrderDetailModal = forwardRef((props, ref) => {
             </Grid>
           </div>
           <div
-            className="order-items ag-theme-material"
+            className="order-items ag-theme-balham"
             style={{ height: 240 }}
           >
             <AgGridReact
               reactUi="true"
-              className="ag-theme-material"
+              className="ag-theme-balham"
               animateRows="true"
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
@@ -148,20 +158,24 @@ const OrderDetailModal = forwardRef((props, ref) => {
         <Button color="black" onClick={() => setIsOpen(false)}>
           Close
         </Button>
-        {status !== "Canceled" && status !== "Delivered" && <Button
-          content="Cancel Order"
-          labelPosition="left"
-          icon="close"
-          onClick={() => setIsOpen(false)}
-          color="red"
-        />}
-        {status !== "Canceled" && status !== "Delivered" && <Button
-          content={nextBtn.label}
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => changeOrderStatus()}
-          color={nextBtn.color}
-        />}
+        {status !== "Canceled" && status !== "Delivered" && (
+          <Button
+            content="Cancel Order"
+            labelPosition="left"
+            icon="close"
+            onClick={() => setIsOpen(false)}
+            color="grey"
+          />
+        )}
+        {status !== "Canceled" && status !== "Delivered" && (
+          <Button
+            content={nextBtn.label}
+            labelPosition="right"
+            icon="checkmark"
+            onClick={() => changeOrderStatus()}
+            color={nextBtn.color}
+          />
+        )}
       </Modal.Actions>
     </Modal>
   )

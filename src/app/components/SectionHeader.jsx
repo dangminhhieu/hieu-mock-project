@@ -12,7 +12,7 @@ const SectionHeader = ({ title, addItem }) => {
           labelPosition="left"
           className="fl-right"
           onClick={addItem}
-          color="green"
+          color="grey"
         >
           <Icon name="plus" />
           Add Item
