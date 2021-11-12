@@ -12,3 +12,8 @@ export const dataURIToBlob = (dataURI) => {
 
     return new Blob([ia], { type: mimeString })
 }
+
+export const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
