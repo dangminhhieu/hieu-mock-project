@@ -1,7 +1,7 @@
 import { List } from "semantic-ui-react"
 import MenuItem from "./MenuItem"
 
-const MenuItemList = ({ items, editItem, addToCart }) => {
+const MenuItemList = ({ items, editItem, addToCart, removeItem }) => {
   return (
     <List className="menu-item-list">
       {items.map(item => (
@@ -10,6 +10,7 @@ const MenuItemList = ({ items, editItem, addToCart }) => {
           item={item}
           editItem={editItem}
           addToCart={addToCart}
+          removeItem={removeItem}
         ></MenuItem>
       ))}
     </List>

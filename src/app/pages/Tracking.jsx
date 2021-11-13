@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { useParams } from "react-router"
-import { Header } from "semantic-ui-react"
 import { getOrder } from "../../api/order.api"
 import { TrackingHeader } from "../components/TrackingHeader"
 import { TrackingItems } from "../components/TrackingList"
@@ -12,7 +11,6 @@ const Tracking = () => {
   useEffect(() => {
     sendRequest(orderId)
   }, [])
-  console.log("order",order)
 
   return (
     <>

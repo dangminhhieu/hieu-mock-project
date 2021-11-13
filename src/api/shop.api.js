@@ -1,10 +1,9 @@
 import { API_URL } from "../app/environments/environment"
-import { sendGetRequest, sendPostRequest, sendPutRequest } from "./base.api"
+import { sendDeleteRequest, sendGetRequest, sendPostRequest, sendPutRequest } from "./base.api"
 
 export const login = async (phoneNumber, isShop = true) => {
   const url = `${API_URL}/${isShop ? "Shop" : "Customer"}/login`
 
-  console.log(url)
   return await sendPostRequest(url, JSON.stringify({ phoneNumber }), {
     "Content-Type": "application/json",
   })
@@ -32,4 +31,13 @@ export const updateShopItem = async formData => {
 
 export const updateShopInfo = async formData => {
   return await sendPutRequest(`${API_URL}/Shop`, formData)
+}
+
+export const removeShopItem = async data => {
+  
+  return await sendDeleteRequest(
+    `${API_URL}/Item`,
+    JSON.stringify(data),
+    { "Content-Type": "application/json" }
+  )
 }

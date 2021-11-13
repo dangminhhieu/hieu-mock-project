@@ -3,13 +3,11 @@ import { Grid } from "semantic-ui-react"
 import NavBar from "./components/NavBar"
 
 const Layout = ({ component: Component, ...rest }) => {
-  console.log("rest", rest)
 
   return (
     <Route
       {...rest}
       render={props => {
-        console.log("props", props)
         return (
           <>
             <NavBar></NavBar>

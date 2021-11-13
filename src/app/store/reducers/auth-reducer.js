@@ -22,7 +22,6 @@ const authReducer = (state = initialState, payload) => {
                 return { ...state, isAuth: true, ...payload.user, isLoadAuthFromLs: false, isShop: true }
         case LOG_OUT:
             sessionStorage.removeItem("user_infomation");
-            console.log("logout")
 
             return { ...state, isAuth: false, id: "", phone: "", isShop: false }
         default:

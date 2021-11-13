@@ -19,7 +19,6 @@ export const sendPostRequest = async (url, body, headers) => {
     body,
     headers,
   })
-  console.log(response)
   const data = await response.json()
 
   if (!response.ok) {
@@ -42,4 +41,21 @@ export const sendPutRequest = async (url, body, headers) => {
   }
 
   return data
+}
+
+export const sendDeleteRequest = async (url, body, headers) => {
+  console.log("remove")
+  const response = await fetch(url, {
+    method: "DELETE",
+    body
+    
+  })
+  
+  const data = await response.json()
+  console.log("delete",data)
+  if (!response.ok) {
+    throw new Error(data.message)
+  }
+
+  return null
 }

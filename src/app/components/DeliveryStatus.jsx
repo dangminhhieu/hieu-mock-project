@@ -26,8 +26,6 @@ const DeliveryStatus = props => {
     
   }}
 
-  console.log(listSteps, listSteps.length)
-
   return (
     <Stepper activeStep={listSteps.indexOf(status) + 1} alternativeLabel>
     {listSteps.map((label) => (

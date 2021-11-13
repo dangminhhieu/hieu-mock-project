@@ -1,9 +1,9 @@
 import MenuItemList from "../components/MenuItemList"
 import SectionHeader from "../components/SectionHeader"
 import { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import useHttp from "../hooks/use-http"
-import { addShopItem, getShopsDetail, updateShopItem } from "../../api/shop.api"
+import { addShopItem, getShopsDetail, removeShopItem, updateShopItem } from "../../api/shop.api"
 import useToast from "../hooks/useToast"
 import { useHistory } from "react-router"
 import SecondaryNavBar from "../components/SecondaryNavBar"
@@ -18,13 +18,12 @@ const AdminMenu = () => {
   const { status, data, sendRequest } = useHttp(getShopsDetail, true)
   const { toastSuccess } = useToast()
   const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(authInfo)
     if (!authInfo.isShop) {
       history.push("/sign-in")
     }
-    console.log(authInfo)
     reloadMenu()
   }, [authInfo])
 
@@ -38,6 +37,11 @@ const AdminMenu = () => {
     const item = menuItems.find(i => i.itemId === id)
 
     modalRef.current.open(item)
+  }
+  const removeItem = id => {
+    const item = menuItems.find(i => i.itemId === id)
+    
+    dispatch(removeShopItem({ shopId: item.shopId, itemId: item.itemId }))
   }
 
   const addItem = () => {
@@ -63,6 +67,7 @@ const AdminMenu = () => {
   const reloadMenu = () => {
     sendRequest(authInfo.id)
   }
+  console.log(data)
 
   return (
     <>
@@ -74,11 +79,11 @@ const AdminMenu = () => {
             addItem={() => addItem()}
           ></SectionHeader>
           {menuItems && (
-            <MenuItemList items={menuItems} editItem={editItem}></MenuItemList>
+            <MenuItemList items={menuItems} editItem={editItem} removeItem = {removeItem}></MenuItemList>
           )}
         </Grid.Column>
         <Grid.Column width={4}>
-          <ShopSideBar></ShopSideBar>
+          <ShopSideBar ></ShopSideBar>
         </Grid.Column>
       </Grid>
 

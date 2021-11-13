@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Grid, Segment, Icon, Label, Menu, Table } from "semantic-ui-react";
+import { Grid, Segment} from "semantic-ui-react";
 import DeliveryStatus from "./DeliveryStatus";
 
 
