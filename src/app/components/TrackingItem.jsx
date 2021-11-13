@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { orderApi } from "../../api/order.api";
-import { Grid, Segment,Icon, Label, Menu, Table,Image,Form  } from "semantic-ui-react";
+import { Table,Image  } from "semantic-ui-react";
 import { formatter } from "../helpers/common.helper";
 
 export const TrackingItem = (props) => {

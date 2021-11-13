@@ -15,7 +15,6 @@ const ShopProfileModal = forwardRef((props, ref) => {
 
   const chooseFile = e => {
     /*Selected files data can be collected here.*/
-    console.log(e.target.files)
     const fr = new FileReader()
     fr.onload = function () {
       setImg(fr.result)

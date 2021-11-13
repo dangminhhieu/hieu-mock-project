@@ -43,7 +43,6 @@ const Shop = () => {
     sendRequest(shopId)
     loadCurrentShopCart(authInfo.id, shopId)
     const shopdCart = sessionStorage.getItem(`cart_${authInfo.id}_${shopId}`)
-    console.log(shopdCart)
     if (shopdCart) {
       setCart(JSON.parse(shopdCart))
     }
@@ -71,7 +70,6 @@ const Shop = () => {
     } else {
       const { items } = newCart.groups[authInfo.id]
       const found = items.find(i => i.itemId === menu.itemId)
-      console.log(found)
       if (found) {
         found.amount++
       } else {
@@ -111,7 +109,6 @@ const Shop = () => {
     if (!items || items.length === 0) {
       return
     }
-    console.log(cartInfo)
 
     setLoading(true)
     const payload = {

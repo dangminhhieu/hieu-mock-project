@@ -55,7 +55,6 @@ const AdminOrders = () => {
   const history = useHistory()
 
   useEffect(() => {
-    console.log(authInfo)
     if (!authInfo.isShop) {
       history.push("/sign-in")
     }

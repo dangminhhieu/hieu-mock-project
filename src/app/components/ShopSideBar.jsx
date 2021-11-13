@@ -6,12 +6,16 @@ import { getShopsDetail, updateShopInfo } from "../../api/shop.api"
 import useToast from "../hooks/useToast"
 import ShopMeta from "./ShopMeta"
 import { logOut } from "./../store/actions/auth-action"
+import { API_URL } from "../environments/environment"
+import ShareModal from "./ShareModal"
+
 
 const ShopSideBar = () => {
   const authInfo = useSelector(shop => shop.auth)
   const [shopData, setShop] = useState({})
   const { toastSuccess } = useToast()
   const dispatch = useDispatch()
+  const shareRef = useRef(null)
 
   useEffect(() => {
     getShopsDetail(authInfo.id).then(res => {
@@ -26,9 +30,13 @@ const ShopSideBar = () => {
     modalRef.current.open(id)
   }
 
-  const share = () => {}
+  const share = () => {
+    shareRef.current.open(`${API_URL}/shop/${authInfo.id}`)
+  }
 
-  const copy = () => {}
+  const copy = (e) => {
+    navigator.clipboard.writeText(window.location.href)
+  }
 
   const updateProfile = async data => {
     data.append("PhoneNumber", authInfo.phone)
@@ -108,6 +116,7 @@ const ShopSideBar = () => {
         shopData={shopData}
         ref={modalRef}
       ></ShopProfileModal>
+      <ShareModal ref={shareRef} />
     </Segment>
   )
 }

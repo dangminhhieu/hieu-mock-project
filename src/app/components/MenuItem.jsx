@@ -1,7 +1,7 @@
 import { Button, Grid, Image, List, Segment } from "semantic-ui-react"
 import { formatCurrency } from "../helpers/number.helper"
 
-const MenuItem = ({ item, editItem, addToCart }) => {
+const MenuItem = ({ item, editItem, addToCart, removeItem }) => {
   const { image, name, price, itemId } = item
   return (
     <List.Item>
@@ -31,6 +31,7 @@ const MenuItem = ({ item, editItem, addToCart }) => {
                       labelPosition="right"
                       content="Delete Item"
                       color="black"
+                      onClick={() => removeItem(itemId)}
                     />
                   </>
                 )}
